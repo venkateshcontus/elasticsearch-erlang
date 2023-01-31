@@ -78,7 +78,7 @@ handle_call({Method, Path, Body0, Params0}, _From, #state{ base_url = BaseUrl, h
     URL = if length(Params) > 0 -> lists:concat([URLPath, "?", Params]);
              true               -> URLPath
     end,
-    Headers = [{"Content-Length", to_list(erlang:iolist_size(Body))}],
+    Headers = [{"Content-Length", to_list(erlang:iolist_size(Body))},{"Authorization" , binary_to_list(<<"Basic emZxYW9wZW5zZWFyY2g6WmZxYW9wZW5zZWFyY2hAMTIz">>)}],
     Request = case Method of
         delete ->
             {URL, Headers};
