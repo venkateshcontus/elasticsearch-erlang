@@ -48,7 +48,7 @@
 %%%=============================================================================
 
 start_link(Args) ->
-    gen_server:start_link(?MODULE, Args, []).
+    gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 request(Worker, Method, Path, Body, Params) ->
     gen_server:call(Worker, {Method, Path, Body, Params}).
